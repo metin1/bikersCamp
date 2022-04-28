@@ -5,8 +5,6 @@ import { hot } from 'react-hot-loader'
 
 import Loading from 'components/Loading'
 
-import 'src/styles/App.scss'
-
 import Routes from './routes'
 
 const ReactApp: React.FC = () => {

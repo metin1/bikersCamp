@@ -15,7 +15,7 @@ const Container = (props: IContainerProps) => {
   return (
     <Box
       p={[3, 5, 7]}
-      width='100%'
+      width='90%'
       minHeight='calc(100vh - 194px)'
       maxWidth={props.maxWidth}
       bg='white'

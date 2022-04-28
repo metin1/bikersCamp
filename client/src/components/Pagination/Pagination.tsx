@@ -10,9 +10,9 @@ const StyledPaginate = styled(ReactPaginate).attrs({
   margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   list-style-type: none;
-  padding: 0 5rem;
+  padding: 0 1rem;
   li a {
     border-radius: 7px;
     padding: 0.1rem 1rem;
@@ -36,6 +36,12 @@ const StyledPaginate = styled(ReactPaginate).attrs({
   li.disable,
   li.disabled a {
     cursor: default;
+  }
+  @media screen and (max-width: 479px) {
+    padding: 0 0.5rem;
+    li a {
+      padding: 0.1rem 0.3rem;
+    }
   }
 `
 
@@ -71,7 +77,7 @@ const Pagination = ({
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         pageCount={pageCount}
-        previousLabel='< Previous'
+        previousLabel='< Prev'
         renderOnZeroPageCount={null}
       />
     </Box>

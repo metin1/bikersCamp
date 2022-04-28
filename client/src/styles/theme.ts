@@ -1,15 +1,14 @@
 import { DefaultTheme } from 'styled-components'
 
 export const colors = {
-  alert: '#f5cccc',
+  alert: '#ff5151',
   background: '#f5f5f5',
   tableHeader: '#e5e5e5',
   tableBackground: '#f5f5f5',
   grey: '#5e5e5e',
-  lightGrey: '#a3a3a3',
+  lightGrey: '#fafafa',
   footer: '#E1EFFF',
   link: '#1890ff',
-  rate: '#1890ff',
 }
 
 const theme: DefaultTheme = {
