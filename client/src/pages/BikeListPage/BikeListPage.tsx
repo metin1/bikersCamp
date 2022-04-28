@@ -1,111 +1,133 @@
-import React, { useState } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { gql, useMutation, useQuery } from '@apollo/client'
-import { divide } from 'lodash'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useQuery } from '@apollo/client'
+import Pagination from 'components/Pagination'
+import Box from 'components/Box'
+import Loading from 'components/Loading'
+import * as Styled from './BikeListPage.styled'
+import { GET_BIKES } from './BikeListPage.query'
 
-const GET_BIKES = gql`
-  query bikesFeed($page: Int) {
-    bikesFeed(page: $page, limit: $limit) {
-      bikes {
-        id
-        text
-        user {
-          avatar
-          username
-        }
-      }
-    }
-  }
-`
+const BikeListPage = () => {
+  const [bikeContent, setBikeContent] = useState([])
+  const [counter, setCounter] = React.useState(50)
+  const [totalBike, setTotalBike] = React.useState(0)
+  const [activePage, setActivePage] = React.useState(1)
+  const [activeType, setActiveType] = React.useState('')
 
-const ADD_BIKE = gql`
-  mutation addBike($bike: BikeInput!) {
-    addBike(bike: $bike) {
-      id
-      text
-      user {
-        username
-        avatar
-      }
-    }
-  }
-`
-
-const Feed = () => {
-  const [bikeContent, setBikeContent] = useState('')
-  const [hasMore, setHasMore] = useState(true)
-  const [page, setPage] = useState(0)
-  const { loading, error, data, fetchMore } = useQuery(GET_BIKES, {
-    pollInterval: 5000,
-    variables: { page: 0, limit: 10 },
+  const { loading, error, data, refetch } = useQuery(GET_BIKES, {
+    variables: { page: 1, bike_id: '', vehicle_type: '' },
+    fetchPolicy: 'network-only',
   })
 
-  const loadMore = (fetchMore: any) => {
-    fetchMore({
-      variables: {
-        page: page + 1,
-      },
-      updateQuery(
-        previousResult: { bikesFeed: { bikes: any } },
-        { fetchMoreResult }: any
-      ) {
-        if (!fetchMoreResult.bikesFeed.bikes.length) {
-          setHasMore(false)
-          return previousResult
-        }
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+    if (counter === 0) {
+      refetch({ page: activePage, vehicle_type: activeType })
+    }
+    return () => clearInterval(timer)
+  }, [counter])
 
-        setPage(page + 1)
+  useEffect(() => {
+    if (data) {
+      setBikeContent(data.bikeList?.data?.bikes || [data.bikeList?.data?.bike])
+      setTotalBike(data.bikeList?.total_count || 0)
+      setCounter(data.bikeList?.ttl || 30)
+    }
+  }, [data])
 
-        const newData = {
-          bikesFeed: {
-            __typename: 'BikeFeed',
-            bikes: [
-              ...previousResult.bikesFeed.bikes,
-              ...fetchMoreResult.bikesFeed.bikes,
-            ],
-          },
-        }
-        return newData
-      },
-    })
+  const handlePageClick = (event: { selected: number }) => {
+    setActivePage(event.selected + 1)
+    refetch({ page: event.selected + 1 })
   }
-  if (loading) return <div>Loading...</div>
+
+  if (loading) return <Loading />
   if (error) return <div>Error! {error.message}</div>
 
-  const { bikesFeed } = data
-  console.log(`LL: bikesFeed`, bikesFeed)
-  const { bikes } = bikesFeed
-  console.log(`LL: bikes`, bikes)
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    refetch({ bike_id: e.target.value })
+  }
+
+  const handleSelectType = (e: any) => {
+    setActiveType(e.target.value)
+    refetch({ vehicle_type: e.target.value })
+  }
 
   return (
-    <div className='container'>
-      <div className='feed'>
-        <InfiniteScroll
-          dataLength={bikes.length}
-          next={() => loadMore(fetchMore)}
-          hasMore={hasMore}
-          loader={
-            <div className='loader' key={'loader'}>
-              Loading ...
-            </div>
-          }
-        >
-          {bikes.map((bike: any) => (
-            <div
-              key={bike.id}
-              className={'bike ' + (bike.id < 0 ? 'optimistic' : '')}
+    <Box>
+      <Box display='flex' justifyContent='space-between' flexWrap='wrap' mb={6}>
+        <Box display='flex' justifyContent='flex-start'>
+          <Box
+            display='flex'
+            justifyItems='right'
+            height='40px'
+            placeholder='Search By Id'
+            justifyContent='flex-start'
+            mx={4}
+          >
+            <input
+              style={{ padding: '8px' }}
+              placeholder='Search By Id'
+              type='text'
+              onChange={handleSearch}
+            />
+          </Box>
+          <Box
+            display='flex'
+            justifyItems='right'
+            height='40px'
+            placeholder='Search By Id'
+            justifyContent='flex-end'
+            mx={4}
+          >
+            <select
+              style={{ padding: '8px' }}
+              placeholder='Filter By Type'
+              onChange={handleSelectType}
             >
-              <div className='header'>
-                <img src={bike.user.avatar} />
-                <h2>{bike.user.username}</h2>
-              </div>
-              <p className='content'>{bike.text}</p>
-            </div>
+              <option value=''>All</option>
+              <option value='scooter'>Scooter</option>
+              <option value='bike'>Bike</option>
+            </select>
+          </Box>
+        </Box>
+        <Box display='flex' flexDirection='column'>
+          <Box>Will refresh in: {counter} seconds</Box>
+          <Box>Total Bookings of Listing Bikes: {totalBike}</Box>
+        </Box>
+      </Box>
+      <Box as='table' width='100%'>
+        <thead>
+          <Box as='tr' backgroundColor='tableBackground'>
+            <Styled.Th>ID</Styled.Th>
+            <Styled.Th>Type</Styled.Th>
+            <Styled.Th>Action</Styled.Th>
+          </Box>
+        </thead>
+        <tbody>
+          {bikeContent?.map((bike: any, i: number) => (
+            <Box
+              as='tr'
+              key={bike?.bike_id}
+              backgroundColor={i % 2 === 1 ? 'tableBackground' : 'inherit'}
+            >
+              <Styled.Td>{bike?.bike_id}</Styled.Td>
+              <Styled.Td>{bike?.vehicle_type}</Styled.Td>
+              <Styled.Td>
+                {bike?.is_reserved ? 'Reserved' : 'Available'}
+              </Styled.Td>
+            </Box>
           ))}
-        </InfiniteScroll>
-      </div>
-    </div>
+        </tbody>
+      </Box>
+      {data?.bikeList?.total_count > 10 && (
+        <Pagination
+          totalItems={data?.bikeList?.total_count}
+          itemsPerPage={10}
+          onPageClick={handlePageClick}
+        />
+      )}
+    </Box>
   )
 }
 
-export default Feed
+export default BikeListPage

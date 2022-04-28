@@ -28,7 +28,7 @@ const typeDefinitions = `
 
   type RootQuery {
     bikes: [Bike],
-    bikeList: BikeList
+    bikeList(page:Int, bike_id:String, vehicle_type:String): BikeList
   }
 
   input BikeInput {
