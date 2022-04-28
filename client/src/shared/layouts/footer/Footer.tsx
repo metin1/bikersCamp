@@ -4,7 +4,15 @@ import Box from 'components/Box'
 
 const Footer: React.FC = () => {
   return (
-    <Box m='auto' mt={8} p={3} bg='lightgrey' width='100%' textAlign='center'>
+    <Box
+      m='auto'
+      p={3}
+      bg='lightgrey'
+      width='100%'
+      height='24px'
+      maxHeight='24px'
+      textAlign='center'
+    >
       Biker Camp © This is Biker Camp page design by Metin
     </Box>
   )

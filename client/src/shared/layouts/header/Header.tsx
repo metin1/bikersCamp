@@ -13,9 +13,11 @@ const Header: React.FC = () => {
   return (
     <Box
       m='auto'
-      mt={4}
-      px={[7, 3, 7]}
+      mt={3}
+      px={[3, 5, 7]}
       maxWidth='1534px'
+      height='100px'
+      maxHeight='100px'
       display='flex'
       justifyContent='space-around'
       justifyItems='center'

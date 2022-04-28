@@ -6,6 +6,7 @@ import Loading from 'components/Loading'
 import * as Styled from './BikeListPage.styled'
 import { GET_BIKES } from './BikeListPage.query'
 import DetailModal from 'components/DetailModal'
+import WarningBox from 'src/components/WarningBox'
 
 export interface BikeType {
   bike_id?: string
@@ -59,7 +60,7 @@ const BikeListPage = () => {
   }
 
   if (loading) return <Loading />
-  if (error) return <div>Error! {error.message}</div>
+  if (error) return <WarningBox>Error! {error.message}</WarningBox>
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     refetch({ bike_id: e.target.value })

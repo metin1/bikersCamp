@@ -16,12 +16,10 @@ const Container = (props: IContainerProps) => {
     <Box
       p={[3, 5, 7]}
       width='90%'
-      minHeight='calc(100vh - 194px)'
+      minHeight='calc(100vh - 226px)'
       maxWidth={props.maxWidth}
       bg='white'
       mx='auto'
-      mt={4}
-      mb={8}
       display='flex'
       flexDirection='column'
       borderRadius={2}
