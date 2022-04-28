@@ -1,0 +1,54 @@
+{
+  "name": "biker-camp-app",
+  "version": "0.0.1",
+  "description": "back-end demo app for bike app with graphql",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --logHeapUsage --maxWorkers=2 --testPathPattern=__tests__/unit",
+    "server": "nodemon --exec babel-node --watch ./ ./index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^8.3.10",
+    "apollo-server": "^3.0.0",
+    "apollo-server-express": "^3.6.7",
+    "await-to-js": "^3.0.0",
+    "axios": "^0.27.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.0",
+    "graphql": "^16.4.0",
+    "helmet": "^5.0.2",
+    "path": "^0.12.7",
+    "winston": "^3.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.5",
+    "concurrently": "^7.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.6.2",
+    "supertest": "^6.2.3"
+  },
+  "keywords": [
+    "Bike",
+    "App",
+    "Node.js",
+    "React",
+    "GraphQL",
+    "Typescript",
+    "Hooks",
+    "Jest",
+    "Redux"
+  ],
+  "author": "Metin Iscan",
+  "license": "MIT",
+  "private": false
+}

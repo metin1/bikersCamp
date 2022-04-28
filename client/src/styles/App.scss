@@ -1,0 +1,22 @@
+@import './color';
+@import './font';
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    &:after,
+    &::before {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+}
+
+#root{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
