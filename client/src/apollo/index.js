@@ -1,8 +1,7 @@
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 
-const BASE_URL =
-  process.env.API_SERVER_URL || `http://localhost:${process.env.PORT}/graphql`
+const BASE_URL = process.env.API_SERVER_URL || `/graphql`
 console.log(`LL: BASE_URL`, BASE_URL)
 
 const AuthLink = (operation, next) => {
