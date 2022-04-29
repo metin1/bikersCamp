@@ -39,29 +39,9 @@ cd client
 npm run build
 ````
 
-## App Info
-
-### Author
-
-M.Metin İŞCAN
-
-### Version
-
-1.0.0
-
-### License
-
-This project was licensed under the MIT License
-
 # Biker Camp
 
-![](https://github.com/metin1/weather-app/blob/master/public/logo192.png?raw=true)
-
----
-
-## Purpose
-
-This site was designed to display bike models.
+![](https://github.com/metin1/weather-app/blob/master/client/public/ms-icon-310x310.png?raw=true)
 
 ---
 
