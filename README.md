@@ -39,13 +39,14 @@ cd client
 npm install
 
 # Run both Express & React from root
+cd ..
 npm run dev
 
 # Build for production
 cd client
 npm run build
 
-# Test
+# To Test
 cd client
 npm run test
 ```
@@ -93,10 +94,9 @@ npm run test
 - [React Hooks](https://ja.reactjs.org/docs/hooks-intro.html)
 - [Redux](https://redux.js.org/)
 - [Styled Component](https://styled-components.com//)
-- [Cypress](https://www.cypress.io/)
+- [GraphQL](https://graphql.org/)
 - [React Testing Library](https://testing-library.com/)
 - [Jest](https://jestjs.io/)
-- [PWA](https://web.dev/progressive-web-apps/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 
