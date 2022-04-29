@@ -29,9 +29,9 @@ app.use(cors())
 app.use('/', express.static(path.join(root, 'client/build')))
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('app/client/build'))
+  app.use(express.static('client/build'))
   app.get('*', function (req, res) {
-    res.sendFile(path.resolve(__dirname, 'app/client/build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'))
   })
 }
 
