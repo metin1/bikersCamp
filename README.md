@@ -1,6 +1,6 @@
 # Biker Camp
 
-![](https://github.com/metin1/weather-app/blob/master/client/public/ms-icon-310x310.png?raw=true)
+![](https://github.com/metin1/bikersCamp/blob/master/client/public/ms-icon-310x310.png?raw=true)
 
 ---
 
@@ -73,15 +73,15 @@ npm run build
 
 ### Bike Page
 
-![](https://github.com/metin1/weather-app/blob/master/assets/bikeList.png?raw=true)
+![](https://github.com/metin1/bikersCamp/blob/master/assets/bikeList.png?raw=true)
 
 ### Bike Detail Modal
 
-![](https://github.com/metin1/weather-app/blob/master/assets/detail.png?raw=true)
+![](https://github.com/metin1/bikersCamp/blob/master/assets/detail.png?raw=true)
 
 ### Login Page
 
-![](https://github.com/metin1/weather-app/blob/master/assets/login.png?raw=true)
+![](https://github.com/metin1/bikersCamp/blob/master/assets/login.png?raw=true)
 
 ### Lighthouse Score
 
