@@ -1,5 +1,6 @@
 const typeDefinitions = `
   scalar Date
+  directive @auth on QUERY | FIELD_DEFINITION | FIELD
 
   type Bike {
     bike_id: String
@@ -11,6 +12,15 @@ const typeDefinitions = `
     total_bookings: Int
     android: String
     ios: String
+  }
+
+  type User {
+    id: Int
+    username: String
+  }
+
+  type Auth {
+    token: String
   }
 
   type BikeData {
@@ -27,6 +37,7 @@ const typeDefinitions = `
   }
 
   type RootQuery {
+    currentUser: User @auth
     bikes: [Bike],
     bikeList(page:Int, bike_id:String, vehicle_type:String): BikeList
   }
@@ -40,9 +51,10 @@ const typeDefinitions = `
   }
 
   type RootMutation {
-    addBike (
-      bike: BikeInput!
-    ): Bike
+    login (
+      userName: String!
+      password: String!
+    ): Auth
   }
 
   schema {

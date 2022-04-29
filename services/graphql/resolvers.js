@@ -1,6 +1,10 @@
 import logger from '../../helpers/logger'
 import to from 'await-to-js'
 import axios from 'axios'
+import JWT from 'jsonwebtoken'
+
+require('dotenv').config()
+const { JWT_SECRET } = process.env
 
 import isNotEmpty from '../../helpers/isNotEmpty'
 
@@ -12,7 +16,6 @@ const resolvers = {
       return response.data?.data?.bikes
     },
     async bikeList(root, args, context) {
-      // const paramOptions = context.body.variables
       let params = '?'
       ;['page', 'vehicle_type', 'bike_id'].forEach((i) => {
         if (i in args && isNotEmpty(args[i])) {
@@ -25,6 +28,28 @@ const resolvers = {
       )
       if (err) return logger.log({ level: 'error', message: 'Bike list cannot fetch' })
       return response.data
+    },
+  },
+  RootMutation: {
+    login(root, { userName, password }, context) {
+      if (userName === 'admin' && password === 'admin') {
+        const token = JWT.sign(
+          {
+            userName,
+            id: 123,
+          },
+          JWT_SECRET,
+          {
+            expiresIn: '1d',
+          }
+        )
+
+        return {
+          token,
+        }
+      } else {
+        return new Error('User not found')
+      }
     },
   },
 }

@@ -16,8 +16,6 @@
     "paths": {
       "src/*": ["src/*"],
       "components/*": ["src/components/*"],
-      "store/*": ["src/store/*"],
-      "helpers/*": ["src/helpers/*"],
     },
     "importHelpers": true
   },
