@@ -11,7 +11,7 @@
     "test": "jest --coverage --logHeapUsage --maxWorkers=2 --testPathPattern=__tests__/unit",
     "test:watch": "jest -- --watch",
     "client": "npm run dev --prefix client",
-    "start": "node --exec babel-node --watch ./ ./index.js",
+    "start": "babel-node index.js",
     "server": "nodemon --exec babel-node --watch ./ ./index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
