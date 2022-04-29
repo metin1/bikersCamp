@@ -1,7 +1,8 @@
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 
-const BASE_URL = process.env.API_SERVER_URL || 'http://localhost:8000/graphql'
+const BASE_URL =
+  process.env.API_SERVER_URL || `http://localhost:${process.env.PORT}/graphql`
 
 const AuthLink = (operation, next) => {
   const token = localStorage.getItem('jwt')
