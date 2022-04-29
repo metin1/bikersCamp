@@ -44,6 +44,10 @@ npm run dev
 # Build for production
 cd client
 npm run build
+
+# Test
+cd client
+npm run test
 ```
 
 ## Demo Page
