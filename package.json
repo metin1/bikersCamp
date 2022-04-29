@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --logHeapUsage --maxWorkers=2 --testPathPattern=__tests__/unit",
+    "test:watch": "jest -- --watch",
     "client": "yarn dev --prefix client",
     "server": "nodemon --exec babel-node --watch ./ ./index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@graphql-tools/schema": "^8.3.10",
     "apollo-server": "^3.0.0",
     "apollo-server-express": "^3.6.7",

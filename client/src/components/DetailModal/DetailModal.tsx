@@ -70,7 +70,7 @@ const DetailModal = ({ selectedBike, onClose }: ModalType) => {
           is_reserved
         </Box>
         <Box width='50%' mr={4}>
-          {selectedBike?.is_reserved}
+          {selectedBike?.is_reserved ? 'Reserved' : 'Not Reserved'}
         </Box>
       </Box>
       <Box display='flex'>
@@ -78,7 +78,7 @@ const DetailModal = ({ selectedBike, onClose }: ModalType) => {
           is_disabled
         </Box>
         <Box width='50%' mr={4}>
-          {selectedBike?.is_disabled}
+          {selectedBike?.is_disabled ? 'Disabled' : 'Not Disabled'}
         </Box>
       </Box>
       <Box display='flex'>

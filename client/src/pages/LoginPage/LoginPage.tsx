@@ -4,6 +4,7 @@ import { useLoginMutation } from 'src/apollo/mutations/login'
 import WarningBox from 'src/components/WarningBox'
 
 import Loading from 'components/Loading'
+import Box from 'src/components/Box'
 
 const LoginPage = ({
   changeLoginState,
@@ -28,29 +29,56 @@ const LoginPage = ({
     })
   }
   return (
-    <div className='login'>
+    <Box
+      display='flex'
+      width='100%'
+      justifyContent='center'
+      height='100vh'
+      alignItems='center'
+      background='backgroundColor'
+      flexDirection='column'
+    >
       {!loading && (
         <form onSubmit={onSubmit}>
-          <label>UserName</label>
-          <input
-            type='text'
-            onChange={event => setUserName(event.target.value)}
-          />
-          <label>Password</label>
-          <input
-            type='password'
-            onChange={event => setPassword(event.target.value)}
-          />
-          <input type='submit' value='Login' />
+          <Box display='flex' flexDirection='column' alignItems='center'>
+            <Box p={2} m={2}>
+              <Box
+                as='input'
+                p={2}
+                width='200px'
+                placeholder='Username'
+                type='text'
+                onChange={(event: {
+                  target: { value: React.SetStateAction<string> }
+                }) => setUserName(event.target.value)}
+              />
+            </Box>
+            <Box p={2} m={2}>
+              <Box
+                as='input'
+                p={2}
+                width='200px'
+                placeholder='Password'
+                type='password'
+                onChange={(event: {
+                  target: { value: React.SetStateAction<string> }
+                }) => setPassword(event.target.value)}
+              />
+            </Box>
+            <Box
+              as='input'
+              my={3}
+              p={2}
+              width='100px'
+              type='submit'
+              value='Login'
+            />
+          </Box>
         </form>
       )}
       {loading && <Loading />}
-      {error && (
-        <WarningBox>
-          <p>There was an error logging in!</p>
-        </WarningBox>
-      )}
-    </div>
+      {error && <p>There was an error logging in!</p>}
+    </Box>
   )
 }
 

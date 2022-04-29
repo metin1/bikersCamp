@@ -8,7 +8,6 @@ import store from 'src/store'
 import theme from 'src/styles/theme'
 
 import 'jest-canvas-mock'
-import 'src/locales/i18n'
 
 const AllProviders: FC = ({ children }: { children: ReactNode }) => {
   return (

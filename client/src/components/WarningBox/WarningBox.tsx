@@ -7,19 +7,18 @@ export interface WarningBoxProps {
 }
 
 function WarningBox(props: WarningBoxProps) {
-	return (
-		<Box
-			minHeight='80vh'
-			width='100%'
-			m='auto'
-			display='flex'
-			justifyContent='center'
-			alignContent='center'
-			fontSize='28px'
-		>
-			{props.children}
-		</Box>
-	)
+  return (
+    <Box
+      width='100%'
+      m='auto'
+      display='flex'
+      justifyContent='center'
+      alignContent='center'
+      fontSize='28px'
+    >
+      {props.children}
+    </Box>
+  )
 }
 
 export default WarningBox

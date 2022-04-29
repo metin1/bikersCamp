@@ -11,6 +11,7 @@ import isNotEmpty from '../../helpers/isNotEmpty'
 const resolvers = {
   RootQuery: {
     async bikes(root, args, context) {
+      console.log(`LL: bikes -> args`, args)
       const [err, response] = await to(axios.get('https://kovan-dummy-api.herokuapp.com/items'))
       if (err) return logger.log({ level: 'error', message: 'Bike list con not fetch' })
       return response.data?.data?.bikes
@@ -38,7 +39,7 @@ const resolvers = {
             userName,
             id: 123,
           },
-          JWT_SECRET,
+          JWT_SECRET || 'xxx_TOP_SECRET_TOKEN_KEY_xxx',
           {
             expiresIn: '1d',
           }

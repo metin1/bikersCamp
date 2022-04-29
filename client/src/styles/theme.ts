@@ -2,7 +2,7 @@ import { DefaultTheme } from 'styled-components'
 
 export const colors = {
   alert: '#ff5151',
-  background: '#f5f5f5',
+  backgroundColor: '#fffde9',
   tableHeader: '#e5e5e5',
   tableBackground: '#f5f5f5',
   grey: '#5e5e5e',

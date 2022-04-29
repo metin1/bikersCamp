@@ -1,0 +1,105 @@
+{
+  "bikeList": {
+    "__typename": "BikeList",
+    "last_updated": 1651242867317,
+    "ttl": 28,
+    "data": {
+      "__typename": "BikeData",
+      "bikes": [
+        {
+          "__typename": "Bike",
+          "bike_id": "OS7VA",
+          "lat": 39.9244125486328,
+          "lon": 32.8643810105882,
+          "is_reserved": true,
+          "is_disabled": true,
+          "vehicle_type": "scooter"
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "Q2RLQ",
+          "lat": 39.92575291543032,
+          "lon": 32.8684158583946,
+          "is_reserved": false,
+          "is_disabled": false,
+          "vehicle_type": null
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "Z2LBF",
+          "lat": 39.92650444469358,
+          "lon": 32.868612121137396,
+          "is_reserved": false,
+          "is_disabled": false,
+          "vehicle_type": "scooter"
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "INZPG",
+          "lat": 39.92533846870144,
+          "lon": 32.86444171725884,
+          "is_reserved": false,
+          "is_disabled": false,
+          "vehicle_type": "bike"
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "FBGXO",
+          "lat": 39.92628897743294,
+          "lon": 32.86483471634385,
+          "is_reserved": false,
+          "is_disabled": false,
+          "vehicle_type": "bike"
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "LT3RT",
+          "lat": 39.9245743946225,
+          "lon": 32.86590391032198,
+          "is_reserved": true,
+          "is_disabled": true,
+          "vehicle_type": "bike"
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "T2ZX9",
+          "lat": 39.92560503037201,
+          "lon": 32.866299055506886,
+          "is_reserved": false,
+          "is_disabled": true,
+          "vehicle_type": "scooter"
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "2NP1R",
+          "lat": 39.925381504646495,
+          "lon": 32.86349704014174,
+          "is_reserved": false,
+          "is_disabled": false,
+          "vehicle_type": null
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "WZKOU",
+          "lat": 39.92647916258679,
+          "lon": 32.86543575881174,
+          "is_reserved": true,
+          "is_disabled": false,
+          "vehicle_type": null
+        },
+        {
+          "__typename": "Bike",
+          "bike_id": "FV2FO",
+          "lat": 39.92631783185765,
+          "lon": 32.86544307082304,
+          "is_reserved": false,
+          "is_disabled": true,
+          "vehicle_type": null
+        }
+      ],
+      "bike": null
+    },
+    "total_count": 500,
+    "nextPage": true
+  }
+}

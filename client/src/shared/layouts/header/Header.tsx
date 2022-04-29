@@ -12,21 +12,20 @@ const Header: React.FC = () => {
 
   return (
     <Box
+      as='h1'
       m='auto'
-      mt={3}
-      px={[3, 5, 7]}
+      mt={4}
+      px={3}
       maxWidth='1534px'
       height='100px'
       maxHeight='100px'
       display='flex'
-      justifyContent='space-around'
+      justifyContent='center'
       justifyItems='center'
       onClick={handleClick}
       cursor='pointer'
     >
-      <Box as='h1' width='100%' m={2} mb={4}>
-        Biker Camp
-      </Box>
+      Biker Camp
     </Box>
   )
 }
