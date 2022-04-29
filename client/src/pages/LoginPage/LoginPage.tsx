@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
 import { useLoginMutation } from 'src/apollo/mutations/login'
-import WarningBox from 'src/components/WarningBox'
+import Box from 'src/components/Box'
 
 import Loading from 'components/Loading'
-import Box from 'src/components/Box'
 
 const LoginPage = ({
   changeLoginState,

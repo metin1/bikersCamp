@@ -37,7 +37,7 @@ module.exports = merge(common, {
     hot: true,
     port: PORT,
     historyApiFallback: true,
-    setupMiddlewares: (middlewares, devServer) => {
+    setupMiddlewares: middlewares => {
       if (openBrowser) {
         openBrowser(`http://127.0.0.1:${PORT}/`)
       }

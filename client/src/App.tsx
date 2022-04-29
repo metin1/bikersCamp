@@ -18,7 +18,7 @@ export interface AppProps {
 
 const ReactApp: React.FC = ({ client }: AppProps) => {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('jwt'))
-  const { data, error, loading, refetch } = useCurrentUserQuery({})
+  const { error, refetch } = useCurrentUserQuery({})
 
   const handleLogin = (status: boolean | ((prevState: boolean) => boolean)) => {
     refetch()

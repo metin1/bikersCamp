@@ -1,16 +1,17 @@
 import React from 'react'
 import * as client from '@apollo/client'
-import { fireEvent, render, screen } from 'src/testUtils'
 import { QueryResult } from '@apollo/client'
-import BikeListPage from './BikeListPage'
 
+import { fireEvent, render, screen } from 'src/testUtils'
+
+import BikeListPage from './BikeListPage'
 import mockData from './mock.json'
 
 describe('<BikeListPage />', () => {
   const loading = false
   const error: any = null
   const data: any = mockData
-  let refetch = jest.fn()
+  const refetch = jest.fn()
 
   beforeEach(() => {
     jest.spyOn(client, 'useQuery').mockReturnValue({
