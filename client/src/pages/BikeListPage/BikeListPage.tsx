@@ -1,12 +1,15 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
-import Pagination from 'components/Pagination'
-import Box from 'components/Box'
-import Loading from 'components/Loading'
-import * as Styled from './BikeListPage.styled'
-import { GET_BIKES } from './BikeListPage.query'
-import DetailModal from 'components/DetailModal'
+
 import WarningBox from 'src/components/WarningBox'
+
+import Box from 'components/Box'
+import DetailModal from 'components/DetailModal'
+import Loading from 'components/Loading'
+import Pagination from 'components/Pagination'
+
+import { GET_BIKES } from './BikeListPage.query'
+import * as Styled from './BikeListPage.styled'
 
 export interface BikeType {
   bike_id?: string

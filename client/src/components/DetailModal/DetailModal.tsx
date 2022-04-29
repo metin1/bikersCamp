@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
+
 import Box from 'components/Box'
 
 const customStyles = {

@@ -1,15 +1,16 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { hot } from 'react-hot-loader'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
+
+import WarningBox from 'src/components/WarningBox'
+import { useCurrentUserQuery } from 'src/hooks/useCurrentUserQuery'
+import LoginPage from 'src/pages/LoginPage'
 
 import Loading from 'components/Loading'
-import LoginPage from 'src/pages/LoginPage'
-import WarningBox from 'src/components/WarningBox'
 
 import Routes from './routes'
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
-import { useCurrentUserQuery } from 'src/hooks/useCurrentUserQuery'
 
 export interface AppProps {
   client: ApolloClient<NormalizedCacheObject>

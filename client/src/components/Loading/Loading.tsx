@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Spinner from 'components/Spinner'
+
 import { InternalWrapper, Wrapper } from './Loading.styled'
 
 interface ILoadingProps {
