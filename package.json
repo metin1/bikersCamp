@@ -11,7 +11,7 @@
     "test": "jest --coverage --logHeapUsage --maxWorkers=2 --testPathPattern=__tests__/unit",
     "test:watch": "jest -- --watch",
     "client": "npm run dev --prefix client",
-    "server": "nodemon --exec babel-node --watch ./ ./index.js",
+    "start": "nodemon --exec babel-node --watch ./ ./index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
@@ -29,6 +29,7 @@
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "path": "^0.12.7",
+    "webpack": "^5.72.0",
     "winston": "^3.7.2"
   },
   "devDependencies": {
