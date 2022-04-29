@@ -52,4 +52,6 @@ for (const element of serviceNames) {
   }
 }
 
-module.exports = app.listen(process.env.PORT || 8000, () => console.log('Listening on port 8000!'))
+module.exports = app.listen(process.env.PORT || 8000, () =>
+  console.log(`Listening on port ${process.env.PORT || 8000}!`)
+)
