@@ -1,10 +1,19 @@
-# Biker Camp - server
+# Biker Camp
+
+![](https://github.com/metin1/weather-app/blob/master/client/public/ms-icon-310x310.png?raw=true)
+
+---
 
 ## Table of contents
 
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
+- [Demo](#demo-page)
+- [Used Technologies](#used-technologies)
+- [Features](#features)
+- [Reference link](#reference-link)
+- [App Info](#app-info)
 
 ## General info
 
@@ -39,141 +48,44 @@ cd client
 npm run build
 ````
 
-# Biker Camp
-
-![](https://github.com/metin1/weather-app/blob/master/client/public/ms-icon-310x310.png?raw=true)
-
----
-
 ## Demo Page
 
-[Click for demo site.](https://weather-app-mtn.herokuapp.com/)
+[Click for demo site.](https://kovan-bike-app.herokuapp.com/)
 
 ---
 
-### Used Technologies
+## Used Technologies
 
 - React and Typescript
 - Redux
 - Styled-components
 - React Testing Library & Jest
-- Cypress
-- Progressive Web App (PWA)
 - GraphQL
 
-### Features
+## Features
 
-- Gives the current weather to the user
-- Gives extended (16 days) forecast weather to the user
-- Can filter the results down by:
-  - Min Temperature
-  - Max Temperature
-- Locations:
-  - London,
-  - New York,
-  - Mumbai,
-  - Sydney,
-  - Tokyo
-- Responsive design for desktop, tablet and mobile
-- Frontend design with [Figma](https://figma.com/ 'Figma') and design [file is here](https://www.figma.com/file/yQ8bTkLf21Tf9cMC3LlAhG/Untitled?node-id=0%3A1)
+- Check bike list
+- Filter by bake type
+- search bike with id
 - Tested with React Testing library including redux.
-- Tested with Cypress.
-- Cache encrypted weather data for a period.
-- Offline usage and install capability via PWA
 
-# General View and Pages
+## General View and Pages
 
-### Current Weather Page
+### Login Page
 
 ![](https://github.com/metin1/weather-app/blob/master/assets/pages/current.png?raw=true)
 
-### Daily Weather Page
+### Bike Page
 
 ![](https://github.com/metin1/weather-app/blob/master/assets/pages/daily.png?raw=true)
 
-### Search and Filter Page
+### Bike Detail Modal
 
 ![](https://github.com/metin1/weather-app/blob/master/assets/pages/filterHot.png?raw=true)
-
-![](https://github.com/metin1/weather-app/blob/master/assets/pages/filterCold.png?raw=true)
 
 ### Lighthouse Score
 
 ![](https://github.com/metin1/Weather-App/blob/master/assets/pages/lighthouse.png?raw=true)
-
-# Quick Start 🚀
-
-## Installation
-
-**1. Clone this repo:**
-
-```bash
-git clone https://github.com/metin1/Weather-App.git weather-app
-cd weather-app
-```
-
-**2. Install the dependencies:**
-
-```bash
-npm install
-```
-
-or
-
-```bash
-yarn
-```
-
-> Weather app is ready to start!
-> **3. Start a live-reload development server:**
-
-```bash
-npm run start
-```
-
-or
-
-```bash
-yarn start
-```
-
-### Build for production
-
-```bash
-npm run build
-```
-
-or
-
-```bash
-yarn build
-```
-
-### RTL Test
-
-```bash
-npm run test
-```
-
-or
-
-```bash
-yarn test
-```
-
-### Cypress Test
-
-```bash
-npm run cy:open
-```
-
-or
-
-```bash
-yarn cy:open
-```
-
----
 
 ## Reference link
 
