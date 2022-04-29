@@ -71,21 +71,19 @@ npm run build
 
 ## General View and Pages
 
-### Login Page
-
-![](https://github.com/metin1/weather-app/blob/master/assets/pages/current.png?raw=true)
-
 ### Bike Page
 
-![](https://github.com/metin1/weather-app/blob/master/assets/pages/daily.png?raw=true)
+![](https://github.com/metin1/weather-app/blob/master/assets/bikeList.png?raw=true)
 
 ### Bike Detail Modal
 
-![](https://github.com/metin1/weather-app/blob/master/assets/pages/filterHot.png?raw=true)
+![](https://github.com/metin1/weather-app/blob/master/assets/detail.png?raw=true)
+
+### Login Page
+
+![](https://github.com/metin1/weather-app/blob/master/assets/login.png?raw=true)
 
 ### Lighthouse Score
-
-![](https://github.com/metin1/Weather-App/blob/master/assets/pages/lighthouse.png?raw=true)
 
 ## Reference link
 
