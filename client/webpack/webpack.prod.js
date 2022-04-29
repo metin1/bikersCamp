@@ -24,11 +24,6 @@ module.exports = merge(common, {
           to: path.resolve(appBuild, 'favicon.ico'),
           toType: 'file',
         },
-        {
-          from: path.resolve(appPublic, 'static'),
-          to: path.resolve(appBuild, 'static'),
-          toType: 'dir',
-        },
       ],
     }),
     new MiniCssExtractPlugin({

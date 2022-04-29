@@ -4,7 +4,6 @@ import { MemoryRouter as Router } from 'react-router-dom'
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
-import store from 'src/store'
 import theme from 'src/styles/theme'
 
 import 'jest-canvas-mock'
@@ -12,9 +11,7 @@ import 'jest-canvas-mock'
 const AllProviders: FC = ({ children }: { children: ReactNode }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <Router>{children}</Router>
-      </Provider>
+      <Router>{children}</Router>
     </ThemeProvider>
   )
 }
