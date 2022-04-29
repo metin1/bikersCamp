@@ -14,8 +14,8 @@ This project show bikes and booking status
 
 Project is created with:
 
-- Node version: 16.2.0
-- NPM version: 7.14.0
+- Node version: 16.14.0
+- NPM version: 8.3.1
 - FE - React - Typescript
 - BE - NodeJs - Express - GraphQL
 

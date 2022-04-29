@@ -29,6 +29,7 @@ const BikeListPage = () => {
   const [totalBike, setTotalBike] = React.useState(0)
   const [activePage, setActivePage] = React.useState(1)
   const [activeType, setActiveType] = React.useState('')
+  const [searchValue, setSearchValue] = React.useState('')
   const [selectedBike, setSelectedBike] = React.useState<BikeType>({})
 
   const { loading, error, data, refetch } = useQuery(GET_BIKES, {
@@ -40,7 +41,11 @@ const BikeListPage = () => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
     if (counter === 0) {
-      refetch({ page: activePage, vehicle_type: activeType })
+      refetch({
+        page: activePage,
+        vehicle_type: activeType,
+        bike_id: searchValue,
+      })
     }
     return () => clearInterval(timer)
   }, [counter])
@@ -65,7 +70,13 @@ const BikeListPage = () => {
   if (loading) return <Loading />
   if (error) return <WarningBox>Error! {error.message}</WarningBox>
 
+  const handleRefresh = () => {
+    setSearchValue('')
+    refetch({ page: activePage, vehicle_type: activeType })
+  }
+
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
     refetch({ bike_id: e.target.value })
   }
 
@@ -78,10 +89,21 @@ const BikeListPage = () => {
     setSelectedBike({})
   }
 
+  const Refresh = () => (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+    >
+      <path d='M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z' />
+    </svg>
+  )
+
   return (
     <Box>
       <Box display='flex' justifyContent='space-between' flexWrap='wrap' mb={6}>
-        <Box display='flex' justifyContent='flex-start'>
+        <Box display='flex' justifyContent='flex-start' alignItems='center'>
           <Box
             display='flex'
             justifyItems='right'
@@ -94,6 +116,7 @@ const BikeListPage = () => {
               style={{ padding: '8px' }}
               placeholder='Search By Id'
               type='text'
+              value={searchValue}
               onChange={handleSearch}
             />
           </Box>
@@ -114,6 +137,14 @@ const BikeListPage = () => {
               <option value='scooter'>Scooter</option>
               <option value='bike'>Bike</option>
             </select>
+          </Box>
+          <Box
+            onClick={handleRefresh}
+            width='24px'
+            height='24px'
+            cursor='pointer'
+          >
+            <Refresh />
           </Box>
         </Box>
         <Box display='flex' flexDirection='column' m={2}>
