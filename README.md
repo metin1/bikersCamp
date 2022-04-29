@@ -30,9 +30,7 @@ Project is created with:
 
 ## Setup
 
-````
-
-```bash
+```
 # Install server dependencies
 npm install
 
@@ -46,7 +44,7 @@ npm run dev
 # Build for production
 cd client
 npm run build
-````
+```
 
 ## Demo Page
 
