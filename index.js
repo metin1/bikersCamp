@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import compress from 'compression'
 import services from './services'
+require('dotenv').config()
 
 const root = path.join(__dirname, '../../')
 
@@ -51,4 +52,4 @@ for (const element of serviceNames) {
   }
 }
 
-module.exports = app.listen(8000, () => console.log('Listening on port 8000!'))
+module.exports = app.listen(process.env.PORT || 8000, () => console.log('Listening on port 8000!'))
