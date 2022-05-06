@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState, useRef } from 'react'
 import { useQuery } from '@apollo/client'
 
 import WarningBox from 'src/components/WarningBox'
@@ -10,6 +10,7 @@ import Pagination from 'components/Pagination'
 
 import { GET_BIKES } from './BikeListPage.query'
 import * as Styled from './BikeListPage.styled'
+import { debounce } from 'lodash'
 
 export interface BikeType {
   bike_id?: string
@@ -26,7 +27,7 @@ export interface BikeType {
 const BikeListPage = () => {
   const [bikeContent, setBikeContent] = useState([])
   const [counter, setCounter] = React.useState(50)
-  const [totalBike, setTotalBike] = React.useState(0)
+  const [totalBooked, setTotalBooked] = React.useState(0)
   const [activePage, setActivePage] = React.useState(1)
   const [activeType, setActiveType] = React.useState('')
   const [searchValue, setSearchValue] = React.useState('')
@@ -57,7 +58,7 @@ const BikeListPage = () => {
           (data.bikeList?.data?.bike && [data.bikeList?.data?.bike]) ||
           []
       )
-      setTotalBike(data.bikeList?.total_count || 0)
+      setTotalBooked(data.bikeList?.total_booked || 0)
       setCounter(data.bikeList?.ttl || 30)
     }
   }, [data])
@@ -67,22 +68,26 @@ const BikeListPage = () => {
     refetch({ page: event.selected + 1 })
   }
 
-  if (loading) return <Loading />
-  if (error) return <WarningBox>Error! {error.message}</WarningBox>
-
   const handleRefresh = () => {
     setSearchValue('')
     refetch({ page: activePage, vehicle_type: activeType })
   }
 
+  const setServicesValueDebounced = useRef(debounce( (value: string) => {
+    return refetch({
+      bike_id: value,
+    }) as any
+  }, 300))
+
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
-    refetch({ bike_id: e.target.value })
+    setServicesValueDebounced.current(e.target.value)
   }
 
   const handleSelectType = (e: any) => {
+    setActivePage(1)
     setActiveType(e.target.value)
-    refetch({ vehicle_type: e.target.value })
+    refetch({ vehicle_type: e.target.value, page: 1 })
   }
 
   const handleCloseModal = () => {
@@ -99,6 +104,10 @@ const BikeListPage = () => {
       <path d='M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z' />
     </svg>
   )
+
+
+  if (loading) return <Loading />
+  if (error) return <WarningBox>Error! {error.message}</WarningBox>
 
   return (
     <Box>
@@ -149,7 +158,7 @@ const BikeListPage = () => {
         </Box>
         <Box display='flex' flexDirection='column' m={2}>
           <Box>Will refresh in: {counter} seconds</Box>
-          <Box>Total Bookings of Listing Bikes: {totalBike}</Box>
+          <Box>Total Bookings of Listing Bikes: {totalBooked}</Box>
         </Box>
       </Box>
       <Box as='table' width='100%'>
@@ -196,6 +205,7 @@ const BikeListPage = () => {
           totalItems={data?.bikeList?.total_count}
           itemsPerPage={10}
           onPageClick={handlePageClick}
+          currentPage={activePage - 1}
         />
       )}
       {selectedBike && Object.entries(selectedBike).length ? (

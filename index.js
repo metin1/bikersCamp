@@ -48,6 +48,6 @@ for (const element of serviceNames) {
     app.use(`/${name}`, services[name])
   }
 }
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 
 module.exports = app.listen(PORT, () => console.log(`Listening on port ${PORT}!`))

@@ -33,6 +33,7 @@ const typeDefinitions = `
     ttl: Int,
     data: BikeData,
     total_count: Int,
+    total_booked: Int,
     nextPage: Boolean,
   }
 

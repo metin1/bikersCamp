@@ -28,7 +28,21 @@ const resolvers = {
         axios.get(`https://kovan-dummy-api.herokuapp.com/items${params}`)
       )
       if (err) return logger.log({ level: 'error', message: 'Bike list cannot fetch' })
-      return response.data
+
+      let totalParams = ''
+      ;['vehicle_type'].forEach((i) => {
+        if (i in args && isNotEmpty(args[i])) {
+          totalParams += `${i}=${args[i]}&`
+        }
+      })
+      totalParams = totalParams.slice(0, -1)
+      const [errorTotal, responseTotal] = await to(
+        axios.get(`https://kovan-dummy-api.herokuapp.com/items?page=0&${totalParams}`)
+      )
+      const total_booked = responseTotal?.data?.data?.bikes?.filter((i) => i?.is_reserved).length
+
+      if (errorTotal) return logger.log({ level: 'error', message: 'Total bike list cannot fetch' })
+      return {...response?.data, total_booked }
     },
   },
   RootMutation: {

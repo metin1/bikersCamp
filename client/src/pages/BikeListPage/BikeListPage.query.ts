@@ -24,6 +24,7 @@ export const GET_BIKES = gql`
         }
       }
       total_count
+      total_booked
       nextPage
     }
   }
