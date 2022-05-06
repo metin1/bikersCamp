@@ -48,12 +48,19 @@ const StyledPaginate = styled(ReactPaginate).attrs({
 export interface PaginationProps {
   totalItems: number
   itemsPerPage: number
+  currentPage: number
   onPageClick: (event: { selected: number }) => void
 }
 
-const Pagination = ({
+const areEqual = (nextProps: { totalItems: number; currentPage: number }, previousProps: { totalItems: number; currentPage: number }) => {
+  return nextProps.totalItems === previousProps.totalItems &&
+   nextProps.currentPage === previousProps.currentPage
+}
+
+const Pagination = React.memo(({
   totalItems,
   itemsPerPage,
+  currentPage,
   onPageClick,
 }: PaginationProps) => {
   const [itemOffset, setItemOffset] = useState(0)
@@ -61,7 +68,7 @@ const Pagination = ({
 
   useEffect(() => {
     setPageCount(Math.ceil(totalItems / itemsPerPage))
-  }, [itemOffset, itemsPerPage])
+  }, [itemOffset, itemsPerPage, totalItems])
 
   const handlePageClick = (event: { selected: number }) => {
     onPageClick(event)
@@ -79,9 +86,12 @@ const Pagination = ({
         pageCount={pageCount}
         previousLabel='< Prev'
         renderOnZeroPageCount={null}
+        forcePage={currentPage}
       />
     </Box>
   )
-}
+}, areEqual)
+
+Pagination.displayName = 'Pagination'
 
 export default Pagination

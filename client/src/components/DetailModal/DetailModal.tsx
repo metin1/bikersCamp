@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 
 import Box from 'components/Box'
+import { isEqual } from 'lodash'
 
 const customStyles = {
   content: {
@@ -34,7 +35,11 @@ export interface ModalType {
   onClose: () => void
 }
 
-const DetailModal = ({ selectedBike, onClose }: ModalType) => {
+const areEqual = (nextProps: { selectedBike: BikeType }, previousProps: { selectedBike: BikeType }) => {
+  return isEqual(nextProps.selectedBike, previousProps.selectedBike)
+}
+
+const DetailModal = React.memo(({ selectedBike, onClose }: ModalType) => {
   return (
     <Modal isOpen={true} style={customStyles} contentLabel='Example Modal'>
       <Box as='h2' textAlign='center' mb={1}>
@@ -127,6 +132,8 @@ const DetailModal = ({ selectedBike, onClose }: ModalType) => {
       </Box>
     </Modal>
   )
-}
+}, areEqual)
+
+DetailModal.displayName = 'DetailModal'
 
 export default DetailModal
