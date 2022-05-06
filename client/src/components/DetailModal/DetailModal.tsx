@@ -1,8 +1,8 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { isEqual } from 'lodash'
 
 import Box from 'components/Box'
-import { isEqual } from 'lodash'
 
 const customStyles = {
   content: {

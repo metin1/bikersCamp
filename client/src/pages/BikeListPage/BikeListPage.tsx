@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState, useRef } from 'react'
 import { useQuery } from '@apollo/client'
+import { debounce } from 'lodash'
 
 import WarningBox from 'src/components/WarningBox'
 
@@ -10,7 +11,6 @@ import Pagination from 'components/Pagination'
 
 import { GET_BIKES } from './BikeListPage.query'
 import * as Styled from './BikeListPage.styled'
-import { debounce } from 'lodash'
 
 export interface BikeType {
   bike_id?: string

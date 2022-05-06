@@ -1,5 +1,4 @@
 import React, { FC, ReactElement, ReactNode } from 'react'
-import { Provider } from 'react-redux'
 import { MemoryRouter as Router } from 'react-router-dom'
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
